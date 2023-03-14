@@ -4,6 +4,10 @@ import {OpenAIStream, OpenAIStreamEvent} from '@/lib/openAIStream';
 if (!process.env.OPENAI_API_KEY)
   throw new Error('OPENAI_API_KEY is not defined');
 
+export const config = {
+  runtime: 'edge'
+};
+  
 export default async function handler(req: NextRequest, ) {
   const { prompt } = (await req.json()) as {prompt: string};
   const payload: OpenAIStreamEvent = {
